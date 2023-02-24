@@ -3,18 +3,33 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#",
+    backgroundColor: "#FFFFFF",
   },
   btnstyle: {
-    padding: 4,
-    margin: 4,
+    padding: 8,
+    margin: 12,
     backgroundColor: "#D9D9D9",
     borderRadius: 4,
     alignItems: "center",
-    
+    shadowColor: "black",
+    shadowOffset: { height: 2, width: 0 },
+    shadowOpacity: 0.35,
+    shadowRadius: 1,
+  },
+  btn_home_style: {
+    width: "auto",
+    padding: 8,
+    margin: 12,
+    backgroundColor: "#D9D9D9",
+    borderRadius: 4,
+    alignItems: "center",
+    shadowColor: "black",
+    shadowOffset: { height: 2, width: 0 },
+    shadowOpacity: 0.35,
+    shadowRadius: 1,
   },
   txtbtnstyle: {
-    color: "white",
+    color: "#00000",
     fontWeight: "bold",
     fontSize: "16px",
   },
