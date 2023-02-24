@@ -1,18 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Text, View, Button } from "react-native";
+import React from "react";
 
-const ResDetailScreen = () => {
+const ResDetailScreen = ({ navigation }) => {
   return (
     <View>
       <Text>ResDetailScreen</Text>
-      <Button 
-      title='Restaurant'
-      onPress={() => navigation.navigate("Detail")}
-      />
+      <Button title="Booking" onPress={() => navigation.navigate("Booking")} />
+      <Button title="Google Maps" onPress={() => navigation.navigate("Booking")} />
+      <Button title="Page Facebook" onPress={() => navigation.navigate("Booking")} />
     </View>
-  )
-}
+  );
+};
 
-export default ResDetailScreen
+export default ResDetailScreen;
 
-const styles = StyleSheet.create({})

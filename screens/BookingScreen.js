@@ -1,10 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Button } from 'react-native'
 import React from 'react'
 
-const BookingScreen = () => {
+const BookingScreen = ({navigation}) => {
   return (
     <View>
       <Text>BookingScreen</Text>
+      <Button 
+      title='Booking'
+      onPress={() => navigation.navigate("Result")}
+      />
     </View>
   )
 }

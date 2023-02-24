@@ -6,7 +6,7 @@ const RestaurantScreen = ({navigation}) => {
     <View>
       <Text>RestaurantScreen</Text>
       <Button 
-      title='Restaurant'
+      title='Detail'
       onPress={() => navigation.navigate("Detail")}
       />
     </View>
