@@ -10,16 +10,11 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import Testpage from "./screens/testpage";
 import MenuScreen from "./screens/MenuScreen";
-import HomeScreen from "./screens/HomeScreen";
 import RestaurantScreen from "./screens/RestaurantScreen";
 import ResDetailScreen from "./screens/ResDetailScreen";
 import BookingScreen from "./screens/BookingScreen";
 import QueueScreen from "./screens/QueueScreen";
-
-
-
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +26,8 @@ const App = () => {
         screenOptions={{
           headerStyle: {
             backgroundColor: "#4545",
+            height: 50,
+            
           },
           headerTitleAlign: "center",
           headerTintColor: "#fff",
