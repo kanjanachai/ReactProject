@@ -11,6 +11,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Testpage from "./screens/testpage";
+import MenuScreen from "./screens/MenuScreen";
 import HomeScreen from "./screens/HomeScreen";
 import RestaurantScreen from "./screens/RestaurantScreen";
 import ResDetailScreen from "./screens/ResDetailScreen";
@@ -38,7 +39,7 @@ const App = () => {
           },
         }}
       >
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={MenuScreen} />
         <Stack.Screen name="Restaurant" component={RestaurantScreen} />
         <Stack.Screen name="Detail" component={ResDetailScreen} />
         <Stack.Screen name="Booking" component={BookingScreen} />
