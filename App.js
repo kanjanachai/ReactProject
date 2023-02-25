@@ -6,7 +6,7 @@ import {
   Button,
   SafeAreaView,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -25,9 +25,8 @@ const App = () => {
         initialRouteName="Home"
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#4545",
-            height: 50,
-            
+            backgroundColor: "#7FB77E",
+            height: 60,
           },
           headerTitleAlign: "center",
           headerTintColor: "#fff",
