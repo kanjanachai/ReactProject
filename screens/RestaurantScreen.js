@@ -6,14 +6,13 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
-  SafeAreaView
-} from 'react-native'
-import React, { useState, useEffect, useCallback } from 'react'
-import { useFocusEffect } from '@react-navigation/native';
-import axios from 'axios';
+  SafeAreaView,
+} from "react-native";
+import React, { useState, useEffect, useCallback } from "react";
+import { useFocusEffect } from "@react-navigation/native";
+import axios from "axios";
 
 const RestaurantScreen = ({ navigation, route }) => {
-
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -21,7 +20,7 @@ const RestaurantScreen = ({ navigation, route }) => {
   const getData = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('https://api.codingthailand.com/api/course');
+      const res = await axios.get("https://api.codingthailand.com/api/course");
       setProduct(res.data.data);
       setLoading(false);
     } catch (error) {
@@ -36,7 +35,7 @@ const RestaurantScreen = ({ navigation, route }) => {
         <Text>{error.message}</Text>
         <Text>เกิดข้อผิดพลาด ไม่สามารถตติดต่อกับ Server ได้</Text>
       </View>
-    )
+    );
   }
 
   // useEffect(() => {
@@ -47,18 +46,7 @@ const RestaurantScreen = ({ navigation, route }) => {
     useCallback(() => {
       getData();
     }, [])
-  )
-
-  const ItemSeparatorView = () => {
-    return (
-      <View style={{
-        height: 0.5,
-        width: '100%',
-        backgroundColor: '#C8C8C8'
-      }}
-      />
-    )
-  }
+  );
 
   const _renderItem = ({ item }) => {
     return (
@@ -66,17 +54,37 @@ const RestaurantScreen = ({ navigation, route }) => {
         <TouchableOpacity
           style={styles.addButtonStyle}
           onPress={() => {
-            navigation.navigate('Detail', {
+            navigation.navigate("Detail", {
               id: item.id,
-              title: item.title
-            })
+              title: item.title,
+            });
           }}
         >
           {/* ---------------------------------------------------------------------------------- */}
-          <View style={{ flex: 1 }}>
-            <View style={{ flex: 1, flexDirection: 'row', margin: 5 }}>
+          <View
+            style={{
+              flex: 1,
+              alignItems: "center",
+              backgroundColor: "#F0EEED",
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                width: "92%",
+                flexDirection: "row",
+                margin: 0,
+                backgroundColor: "#ffffff",
+                padding: 16,
+                borderRadius: 10,
+                shadowColor: "black",
+                shadowOffset: { height: 2, width: 0 },
+                shadowOpacity: 0.35,
+                shadowRadius: 1,
+              }}
+            >
               <Image
-                resizeMode='cover'
+                resizeMode="cover"
                 style={styles.thumbnail}
                 source={{ uri: item.picture }}
               />
@@ -84,53 +92,58 @@ const RestaurantScreen = ({ navigation, route }) => {
                 <View style={styles.dataContent}>
                   <Text style={styles.title}>{item.title}</Text>
                   <Text style={styles.detail}>{item.detail}</Text>
-                  <Text style={styles.detail2}>View : {item.view}</Text>
                 </View>
               </View>
+              <Image
+                resizeMode="cover"
+                style={styles.thumbnail}
+                source={{ uri: item.picture }}
+              />
             </View>
           </View>
           {/* ---------------------------------------------------------------------------------- */}
         </TouchableOpacity>
       </SafeAreaView>
-    )
-  }
+    );
+  };
 
   if (loading === true) {
     return (
       <View>
-        <ActivityIndicator color='#f4511e' size='large' />
+        <ActivityIndicator color="#f4511e" size="large" />
       </View>
-    )
+    );
   }
 
   const _onRefresh = () => {
     getData();
-  }
+  };
 
   return (
-    <View >
-      <View style={{flex:1, alignItems: "center"}}><Text>{route.params?.page}</Text></View>
+    <View>
+      <View style={{ flex: 1, alignItems: "center" }}>
+        <Text>{route.params?.page}</Text>
+      </View>
       <FlatList
         data={product}
         keyExtractor={(item, index) => item.id.toString()}
         onRefresh={_onRefresh}
         refreshing={loading}
-        ItemSeparatorComponent={ItemSeparatorView}
         renderItem={_renderItem}
       />
     </View>
   );
-}
+};
 
-export default RestaurantScreen
+export default RestaurantScreen;
 
 const styles = StyleSheet.create({
   container: {
     height: 80,
     elevation: 3,
-    borderColor: 'gray',
+    borderColor: "gray",
     borderRadius: 5,
-    flexDirection: 'row',
+    flexDirection: "row",
     marginHorizontal: 20,
   },
   dataContainer: {
@@ -146,22 +159,22 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   title: {
-    color: '#444',
+    color: "#444",
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   detail: {
     fontSize: 16,
-    color: '#888',
-    fontWeight: '700',
+    color: "#888",
+    fontWeight: "700",
   },
   detail2: {
     fontSize: 14,
-    color: '#888',
-    fontWeight: '500',
+    color: "#888",
+    fontWeight: "500",
   },
   addButtonStyle: {
-    width: '100%',
+    width: "100%",
     marginBottom: 15,
   },
 });
