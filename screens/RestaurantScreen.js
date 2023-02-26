@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import React, { useState, useEffect, useCallback } from "react";
 import { useFocusEffect } from "@react-navigation/native";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
 import axios from "axios";
 
 const RestaurantScreen = ({ navigation, route }) => {
@@ -39,7 +39,7 @@ const RestaurantScreen = ({ navigation, route }) => {
 
   const _renderItem = ({ item }) => {
     return (
-      <SafeAreaView>
+      <View>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("Detail"); /* ,
@@ -50,17 +50,16 @@ const RestaurantScreen = ({ navigation, route }) => {
             style={{
               flex: 1,
               alignItems: "center",
-              backgroundColor: "#F0EEED",
             }}
           >
             <View
               style={{
                 flex: 1,
                 flexDirection: "row",
-                backgroundColor: "#ffffff",
+                backgroundColor: "#EAEAEA",
                 borderRadius: 20,
                 padding: 5,
-                margin: 6,
+                marginTop: 10,
                 shadowColor: "black",
                 shadowOpacity: 0.25,
                 shadowRadius: 4,
@@ -68,10 +67,10 @@ const RestaurantScreen = ({ navigation, route }) => {
               }}
             >
               <Image
-                style={{ width: 80, height: 80, margin: 10 }}
+                style={{ width: 80, height: 80, margin: 10, borderRadius:20 }}
                 source={require("../assets/iconfood/japan.png")}
               />
-              <View>
+              <View style={{margin:10}}>
                 <Text style={{ fontSize: 16, fontWeight: "800", margin: 5 }}>
                   {/* {item.product} */}แสงท่าเตียน
                 </Text>
@@ -82,19 +81,21 @@ const RestaurantScreen = ({ navigation, route }) => {
                   Rating : 4.6
                 </Text>
               </View>
-              <AntDesign name="rightcircleo" size={24} color="black" />
-
+              <View style={{justifyContent:"center", margin:10}}>
+              {/* <AntDesign name="rightcircleo" size={30} color="black"/> */}
+              <AntDesign name="right" size={24} color="black" />
+              </View>
             </View>
           </View>
         </TouchableOpacity>
-      </SafeAreaView>
+      </View>
     );
   };
 
   if (loading === true) {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <ActivityIndicator color="#609EA2" size="large" />
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "#6B728E" }}>
+        <ActivityIndicator color="#ffffff" size="large" />
       </View>
     );
   }
@@ -104,10 +105,12 @@ const RestaurantScreen = ({ navigation, route }) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
-      <View >
+    <SafeAreaView
+      style={{ flex: 1, alignItems: "center", backgroundColor: "#6B728E" }}
+    >
+      {/* <View>
         <Text>{route.params?.page}</Text>
-      </View>
+      </View> */}
       <FlatList
         data={restaurant}
         // keyExtractor={(item, index) => item.id.toString()}

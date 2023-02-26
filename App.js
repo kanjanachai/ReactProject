@@ -25,18 +25,19 @@ const App = () => {
         initialRouteName="Home"
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#ffffff",
+            backgroundColor: "#404258",
             height: 50,
+            borderBottomWidth: 0,
           },
           headerTitleAlign: "center",
-          headerTintColor: "#3FA796",
+          headerTintColor: "white"/* "#3FA796" */,
           headerTitleStyle: {
             fontWeight: "700",
           },
         }}
       >
-        {/* <Stack.Screen name="Home" component={MenuScreen} /> */}
-        <Stack.Screen name="Restaurant" component={RestaurantScreen} />
+        <Stack.Screen name="Home" component={MenuScreen} />
+        <Stack.Screen name="Restaurant" component={RestaurantScreen} options={({ route }) => ({ title: route.params.page })} />
         <Stack.Screen name="Detail" component={ResDetailScreen} />
         <Stack.Screen name="Booking" component={BookingScreen} />
         <Stack.Screen name="Result" component={QueueScreen} />

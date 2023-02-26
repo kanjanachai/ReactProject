@@ -10,18 +10,18 @@ import React, { useState } from "react";
 import styles from "../component/styles";
 
 const HomeScreen = ({ navigation }) => {
-  const today = new Date();
-  const d = today.toUTCString().split(" ");
-  const date = d[0] + " " + d[1] + " " + d[2] + " " + d[3];
+  // const today = new Date();
+  // const d = today.toUTCString().split(" ");
+  // const date = d[0] + " " + d[1] + " " + d[2] + " " + d[3];
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.home_hello}>
+      {/* <View style={styles.home_hello}>
         <Text style={styles.home_txt_hello}>Hello {date}</Text>
-      </View>
+      </View> */}
       <Image
         source={require("../assets/testpic.jpg")}
-        style={{ width: "100%", height: 140, marginBottom: 5}}
+        style={{ width: "100%", height: 180, marginBottom: 5}}
       />
       <Text style={styles.home_txt_sty}>This is a festival of flavors.</Text>
       <View style={{ flex: 1, width: "92%" }}>

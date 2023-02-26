@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: "#EAEAEA",
+    backgroundColor: "#6B728E"/* "#EAEAEA" */,
   },
   /// Home Screen ///
   home_btn_sty: {
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     marginLeft: 8,
     marginRight: 8,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#EAEAEA"/* "#ffffff" */,
     borderRadius: 5,
     alignItems: "center",
     shadowColor: "black",
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     margin: 4,
   },
   home_txt_sty: {
-    color: "#332C39",
+    color: "#ffffff",
     fontWeight: "500",
     fontSize: 14,
     margin: 8,
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent:"center",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#EAEAEA"/* "#ffffff" */,
     height: 35,
     width: "100%",
     padding: 5,
