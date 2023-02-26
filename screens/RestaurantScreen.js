@@ -13,38 +13,29 @@ import { useFocusEffect } from "@react-navigation/native";
 import axios from "axios";
 
 const RestaurantScreen = ({ navigation, route }) => {
-  const [product, setProduct] = useState([]);
+  const [restaurant, setRestaurant] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const api = "https://stormy-panther.cyclic.app/restaurant";
 
-  const getData = async () => {
+  const getdata = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("https://api.codingthailand.com/api/course");
-      setProduct(res.data.data);
+      const res = await axios.get(api);
+      setRestaurant(res.data.data);
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      setError(error);
     }
   };
 
-  if (error) {
-    return (
-      <View style={styles.container}>
-        <Text>{error.message}</Text>
-        <Text>เกิดข้อผิดพลาด ไม่สามารถตติดต่อกับ Server ได้</Text>
-      </View>
-    );
-  }
-
-  // useEffect(() => {
-  //   getData();
-  // }, [])
-
+  // useEffect(
+  //   useCallback(() => {
+  //     getdata();
+  //   }, [])
+  // );
   useFocusEffect(
     useCallback(() => {
-      getData();
+      getdata();
     }, [])
   );
 
@@ -52,15 +43,11 @@ const RestaurantScreen = ({ navigation, route }) => {
     return (
       <SafeAreaView>
         <TouchableOpacity
-          style={styles.addButtonStyle}
           onPress={() => {
-            navigation.navigate("Detail", {
-              id: item.id,
-              title: item.title,
-            });
+            navigation.navigate("Detail"),
+              { id: item.resid, title: item.title };
           }}
         >
-          {/* ---------------------------------------------------------------------------------- */}
           <View
             style={{
               flex: 1,
@@ -71,37 +58,13 @@ const RestaurantScreen = ({ navigation, route }) => {
             <View
               style={{
                 flex: 1,
-                width: "92%",
                 flexDirection: "row",
-                margin: 0,
-                backgroundColor: "#ffffff",
-                padding: 16,
-                borderRadius: 10,
-                shadowColor: "black",
-                shadowOffset: { height: 2, width: 0 },
-                shadowOpacity: 0.35,
-                shadowRadius: 1,
+                backgroundColor: "#999999",
               }}
             >
-              <Image
-                resizeMode="cover"
-                style={styles.thumbnail}
-                source={{ uri: item.picture }}
-              />
-              <View style={styles.dataContainer}>
-                <View style={styles.dataContent}>
-                  <Text style={styles.title}>{item.title}</Text>
-                  <Text style={styles.detail}>{item.detail}</Text>
-                </View>
-              </View>
-              <Image
-                resizeMode="cover"
-                style={styles.thumbnail}
-                source={{ uri: item.picture }}
-              />
+              <Image style={styles.thumbnail} source={{ uri: item.picture }} />
             </View>
           </View>
-          {/* ---------------------------------------------------------------------------------- */}
         </TouchableOpacity>
       </SafeAreaView>
     );
@@ -110,13 +73,13 @@ const RestaurantScreen = ({ navigation, route }) => {
   if (loading === true) {
     return (
       <View>
-        <ActivityIndicator color="#f4511e" size="large" />
+        <ActivityIndicator color="#609EA2" size="large" />
       </View>
     );
   }
 
   const _onRefresh = () => {
-    getData();
+    getdata();
   };
 
   return (
@@ -125,8 +88,8 @@ const RestaurantScreen = ({ navigation, route }) => {
         <Text>{route.params?.page}</Text>
       </View>
       <FlatList
-        data={product}
-        keyExtractor={(item, index) => item.id.toString()}
+        data={restaurant}
+        // keyExtractor={(item, index) => item.id.toString()}
         onRefresh={_onRefresh}
         refreshing={loading}
         renderItem={_renderItem}
