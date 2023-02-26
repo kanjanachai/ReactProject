@@ -10,15 +10,9 @@ import React, { useState } from "react";
 import styles from "../component/styles";
 
 const HomeScreen = ({ navigation }) => {
-  // const today = new Date();
-  // const d = today.toUTCString().split(" ");
-  // const date = d[0] + " " + d[1] + " " + d[2] + " " + d[3];
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <View style={styles.home_hello}>
-        <Text style={styles.home_txt_hello}>Hello {date}</Text>
-      </View> */}
       <Image
         source={require("../assets/testpic.jpg")}
         style={{ width: "100%", height: 180, marginBottom: 5}}
@@ -29,7 +23,7 @@ const HomeScreen = ({ navigation }) => {
           <TouchableOpacity
             style={styles.home_btn_sty}
             onPress={() =>
-              navigation.navigate("Restaurant", { page: "Korean Food" })
+              navigation.navigate("Restaurant", { page: "Korean Food", cate: "korean" })
             }
           >
             <Image
@@ -42,7 +36,7 @@ const HomeScreen = ({ navigation }) => {
           <TouchableOpacity
             style={styles.home_btn_sty}
             onPress={() =>
-              navigation.navigate("Restaurant", { page: "Japanese Food" })
+              navigation.navigate("Restaurant", { page: "Japanese Food", cate: "japanese" })
             }
           >
             <Image
@@ -57,7 +51,7 @@ const HomeScreen = ({ navigation }) => {
           <TouchableOpacity
             style={styles.home_btn_sty}
             onPress={() =>
-              navigation.navigate("Restaurant", { page: "Chinese Food" })
+              navigation.navigate("Restaurant", { page: "Chinese Food", cate: "chinese" })
             }
           >
             <Image
@@ -70,7 +64,7 @@ const HomeScreen = ({ navigation }) => {
           <TouchableOpacity
             style={styles.home_btn_sty}
             onPress={() =>
-              navigation.navigate("Restaurant", { page: "Thai Food" })
+              navigation.navigate("Restaurant", { page: "Thai Food", cate: "thai" })
             }
           >
             <Image
@@ -85,7 +79,7 @@ const HomeScreen = ({ navigation }) => {
           <TouchableOpacity
             style={styles.home_btn_sty}
             onPress={() =>
-              navigation.navigate("Restaurant", { page: "Recommend" })
+              navigation.navigate("Restaurant", { page: "Recommend", cate: "recommend" })
             }
           >
             <Image
@@ -98,7 +92,7 @@ const HomeScreen = ({ navigation }) => {
           <TouchableOpacity
             style={styles.home_btn_sty}
             onPress={() =>
-              navigation.navigate("Restaurant", { page: "All Restaurant" })
+              navigation.navigate("Restaurant", { page: "All Restaurant",cate: "" })
             }
           >
             <Image

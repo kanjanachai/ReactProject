@@ -16,14 +16,14 @@ import axios from "axios";
 const RestaurantScreen = ({ navigation, route }) => {
   const [restaurant, setRestaurant] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const api = "https://stormy-panther.cyclic.app/restaurant";
+  const api = "https://stormy-panther.cyclic.app/restaurant/";
   // const api = "https://api.codingthailand.com/api/course";
-  const api = "https://zealous-pink-kimono.cyclic.app/inventory";
+  // const api = "https://zealous-pink-kimono.cyclic.app/inventory";
 
   const getdata = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(api);
+      const res = await axios.get(api  + route.params.cate);
       setRestaurant(res.data.data);
       setLoading(false);
     } catch (error) {
@@ -37,13 +37,31 @@ const RestaurantScreen = ({ navigation, route }) => {
     }, [])
   );
 
+  if (loading === true) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "#6B728E",
+        }}
+      >
+        <ActivityIndicator color="#ffffff" size="large" />
+      </View>
+    );
+  }
+
+  const _onRefresh = () => {
+    getdata();
+  };
+
   const _renderItem = ({ item }) => {
     return (
       <View>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Detail"); /* ,
-              { id: item.id, title: item.title } */
+            navigation.navigate("Detail", { id: item.resid });
           }}
         >
           <View
@@ -59,7 +77,9 @@ const RestaurantScreen = ({ navigation, route }) => {
                 backgroundColor: "#EAEAEA",
                 borderRadius: 20,
                 padding: 5,
-                marginTop: 10,
+                marginTop: 15,
+                marginLeft: 15,
+                marginRight: 15,
                 shadowColor: "black",
                 shadowOpacity: 0.25,
                 shadowRadius: 4,
@@ -67,23 +87,23 @@ const RestaurantScreen = ({ navigation, route }) => {
               }}
             >
               <Image
-                style={{ width: 80, height: 80, margin: 10, borderRadius:20 }}
-                source={require("../assets/iconfood/japan.png")}
+                style={{ width: 85, height: 85, margin: 5, borderRadius: 20 }}
+                source={{ uri: item.picture }}
               />
-              <View style={{margin:10}}>
-                <Text style={{ fontSize: 16, fontWeight: "800", margin: 5 }}>
-                  {/* {item.product} */}แสงท่าเตียน
+              <View style={{ margin: 10, width: 180 }}>
+                <Text style={{ fontSize: 14, fontWeight: "600", marginBottom: 5 }}>
+                  {item.title}
+                </Text>
+                <Text style={{ fontSize: 14, fontWeight: "500", marginBottom: 5 }}>
+                  เวลาเปิด : {item.time}
                 </Text>
                 <Text style={{ fontSize: 14, fontWeight: "500" }}>
-                  12.00-22.00 น. (ปิดวันจันทร์)
-                </Text>
-                <Text style={{ fontSize: 14, fontWeight: "500" }}>
-                  Rating : 4.6
+                  Rating : {item.rating}
                 </Text>
               </View>
-              <View style={{justifyContent:"center", margin:10}}>
-              {/* <AntDesign name="rightcircleo" size={30} color="black"/> */}
-              <AntDesign name="right" size={24} color="black" />
+              <View style={{ justifyContent: "center", margin: 10 }}>
+                {/* <AntDesign name="rightcircleo" size={30} color="black"/> */}
+                <AntDesign name="right" size={24} color="black" />
               </View>
             </View>
           </View>
@@ -91,19 +111,6 @@ const RestaurantScreen = ({ navigation, route }) => {
       </View>
     );
   };
-
-  if (loading === true) {
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "#6B728E" }}>
-        <ActivityIndicator color="#ffffff" size="large" />
-      </View>
-    );
-  }
-
-  const _onRefresh = () => {
-    getdata();
-  };
-
   return (
     <SafeAreaView
       style={{ flex: 1, alignItems: "center", backgroundColor: "#6B728E" }}
@@ -113,7 +120,7 @@ const RestaurantScreen = ({ navigation, route }) => {
       </View> */}
       <FlatList
         data={restaurant}
-        // keyExtractor={(item, index) => item.id.toString()}
+        // keyExtractor={(item, index) => item.resid.toString()}
         onRefresh={_onRefresh}
         refreshing={loading}
         renderItem={_renderItem}

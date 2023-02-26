@@ -73,7 +73,7 @@ const MenuScreen = () => {
                 size={22}
                 color={focused ? "#ffffff" : "#888888"}
               />
-              <Text style={{color: focused ? "#ffffff" : "#888888"}}>Pomotion</Text>
+              <Text style={{color: focused ? "#ffffff" : "#888888"}}>Promotion</Text>
             </View>
           ),
         }}
