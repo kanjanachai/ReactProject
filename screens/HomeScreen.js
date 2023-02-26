@@ -15,100 +15,98 @@ const HomeScreen = ({ navigation }) => {
   const date = d[0] + " " + d[1] + " " + d[2] + " " + d[3];
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <View style={styles.hello}>
-          <Text style={styles.txthello}>Hello {date}</Text>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.home_hello}>
+        <Text style={styles.home_txt_hello}>Hello {date}</Text>
+      </View>
+      <Image
+        source={require("../assets/testpic.jpg")}
+        style={{ width: "100%", height: 140, marginBottom: 5}}
+      />
+      <Text style={styles.home_txt_sty}>This is a festival of flavors.</Text>
+      <View style={{ flex: 1, width: "92%" }}>
+        <View style={{ flexDirection: "row" }}>
+          <TouchableOpacity
+            style={styles.home_btn_sty}
+            onPress={() =>
+              navigation.navigate("Restaurant", { page: "Korean Food" })
+            }
+          >
+            <Image
+              source={require("../assets/iconfood/Korea.png")}
+              style={{ width: 50, height: 50, margin: 4 }}
+            />
+            <Text style={styles.home_txt_btn_sty}>Korean Food</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.home_btn_sty}
+            onPress={() =>
+              navigation.navigate("Restaurant", { page: "Japanese Food" })
+            }
+          >
+            <Image
+              source={require("../assets/iconfood/Japan.png")}
+              style={{ width: 50, height: 50, margin: 4 }}
+            />
+            <Text style={styles.home_txt_btn_sty}>Japanese Food</Text>
+          </TouchableOpacity>
         </View>
-        <Image
-          source={require("../assets/testpic.jpg")}
-          style={{ width: "92%", height: 120, margin: 4, borderRadius: 5 }}
-        />
-        <Text style={styles.txtsty}>This is a festival of flavors.</Text>
-        <View style={{ flex: 1, width: "92%" }}>
-          <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity
-              style={styles.btn_home_style}
-              onPress={() =>
-                navigation.navigate("Restaurant", { page: "Korean Food" })
-              }
-            >
-              <Image
-                source={require("../assets/iconfood/Korea.png")}
-                style={{ width: 50, height: 50, margin: 4 }}
-              />
-              <Text style={styles.txtbtnstyle}>Korean Food</Text>
-            </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.btn_home_style}
-              onPress={() =>
-                navigation.navigate("Restaurant", { page: "Japanese Food" })
-              }
-            >
-              <Image
-                source={require("../assets/iconfood/Japan.png")}
-                style={{ width: 50, height: 50, margin: 4 }}
-              />
-              <Text style={styles.txtbtnstyle}>Japanese Food</Text>
-            </TouchableOpacity>
-          </View>
+        <View style={{ flexDirection: "row" }}>
+          <TouchableOpacity
+            style={styles.home_btn_sty}
+            onPress={() =>
+              navigation.navigate("Restaurant", { page: "Chinese Food" })
+            }
+          >
+            <Image
+              source={require("../assets/iconfood/China.png")}
+              style={{ width: 50, height: 50, margin: 4 }}
+            />
+            <Text style={styles.home_txt_btn_sty}>Chinese Food</Text>
+          </TouchableOpacity>
 
-          <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity
-              style={styles.btn_home_style}
-              onPress={() =>
-                navigation.navigate("Restaurant", { page: "Chinese Food" })
-              }
-            >
-              <Image
-                source={require("../assets/iconfood/China.png")}
-                style={{ width: 50, height: 50, margin: 4 }}
-              />
-              <Text style={styles.txtbtnstyle}>Chinese Food</Text>
-            </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.home_btn_sty}
+            onPress={() =>
+              navigation.navigate("Restaurant", { page: "Thai Food" })
+            }
+          >
+            <Image
+              source={require("../assets/iconfood/Thai.png")}
+              style={{ width: 50, height: 50, margin: 4 }}
+            />
+            <Text style={styles.home_txt_btn_sty}>Thai Food</Text>
+          </TouchableOpacity>
+        </View>
 
-            <TouchableOpacity
-              style={styles.btn_home_style}
-              onPress={() =>
-                navigation.navigate("Restaurant", { page: "Thai Food" })
-              }
-            >
-              <Image
-                source={require("../assets/iconfood/Thai.png")}
-                style={{ width: 50, height: 50, margin: 4 }}
-              />
-              <Text style={styles.txtbtnstyle}>Thai Food</Text>
-            </TouchableOpacity>
-          </View>
+        <View style={{ flexDirection: "row" }}>
+          <TouchableOpacity
+            style={styles.home_btn_sty}
+            onPress={() =>
+              navigation.navigate("Restaurant", { page: "Recommend" })
+            }
+          >
+            <Image
+              source={require("../assets/react_logo.png")}
+              style={{ width: 50, height: 50, margin: 4 }}
+            />
+            <Text style={styles.home_txt_btn_sty}>Recommend</Text>
+          </TouchableOpacity>
 
-          <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity
-              style={styles.btn_home_style}
-              onPress={() =>
-                navigation.navigate("Restaurant", { page: "Recommend" })
-              }
-            >
-              <Image
-                source={require("../assets/react_logo.png")}
-                style={{ width: 50, height: 50, margin: 4 }}
-              />
-              <Text style={styles.txtbtnstyle}>Recommend</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.btn_home_style}
-              onPress={() =>
-                navigation.navigate("Restaurant", { page: "All Restaurant" })
-              }
-            >
-              <Image
-                source={require("../assets/react_logo.png")}
-                style={{ width: 50, height: 50, margin: 4 }}
-              />
-              <Text style={styles.txtbtnstyle}>All Restaurant</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            style={styles.home_btn_sty}
+            onPress={() =>
+              navigation.navigate("Restaurant", { page: "All Restaurant" })
+            }
+          >
+            <Image
+              source={require("../assets/react_logo.png")}
+              style={{ width: 50, height: 50, margin: 4 }}
+            />
+            <Text style={styles.home_txt_btn_sty}>All Restaurant</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

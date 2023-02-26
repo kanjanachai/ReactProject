@@ -19,27 +19,24 @@ import QueueScreen from "./screens/QueueScreen";
 const Stack = createNativeStackNavigator();
 
 const App = () => {
- 
   return (
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#609EA2",
-            height: 60,
+            backgroundColor: "#ffffff",
+            height: 50,
           },
           headerTitleAlign: "center",
-          headerTintColor: "#ffffff",
+          headerTintColor: "#3FA796",
           headerTitleStyle: {
-            fontWeight: "bold",
+            fontWeight: "700",
           },
         }}
       >
-        <Stack.Screen name="Home" component={MenuScreen} />
-        <Stack.Screen
-          name="Restaurant"
-          component={RestaurantScreen}/>
+        {/* <Stack.Screen name="Home" component={MenuScreen} /> */}
+        <Stack.Screen name="Restaurant" component={RestaurantScreen} />
         <Stack.Screen name="Detail" component={ResDetailScreen} />
         <Stack.Screen name="Booking" component={BookingScreen} />
         <Stack.Screen name="Result" component={QueueScreen} />

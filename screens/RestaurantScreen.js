@@ -10,12 +10,15 @@ import {
 } from "react-native";
 import React, { useState, useEffect, useCallback } from "react";
 import { useFocusEffect } from "@react-navigation/native";
+import { AntDesign } from '@expo/vector-icons';
 import axios from "axios";
 
 const RestaurantScreen = ({ navigation, route }) => {
   const [restaurant, setRestaurant] = useState([]);
   const [loading, setLoading] = useState(false);
-  const api = "https://stormy-panther.cyclic.app/restaurant";
+  // const api = "https://stormy-panther.cyclic.app/restaurant";
+  // const api = "https://api.codingthailand.com/api/course";
+  const api = "https://zealous-pink-kimono.cyclic.app/inventory";
 
   const getdata = async () => {
     try {
@@ -28,11 +31,6 @@ const RestaurantScreen = ({ navigation, route }) => {
     }
   };
 
-  // useEffect(
-  //   useCallback(() => {
-  //     getdata();
-  //   }, [])
-  // );
   useFocusEffect(
     useCallback(() => {
       getdata();
@@ -44,8 +42,8 @@ const RestaurantScreen = ({ navigation, route }) => {
       <SafeAreaView>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Detail"),
-              { id: item.resid, title: item.title };
+            navigation.navigate("Detail"); /* ,
+              { id: item.id, title: item.title } */
           }}
         >
           <View
@@ -59,10 +57,33 @@ const RestaurantScreen = ({ navigation, route }) => {
               style={{
                 flex: 1,
                 flexDirection: "row",
-                backgroundColor: "#999999",
+                backgroundColor: "#ffffff",
+                borderRadius: 20,
+                padding: 5,
+                margin: 6,
+                shadowColor: "black",
+                shadowOpacity: 0.25,
+                shadowRadius: 4,
+                shadowOffset: { height: 0, width: 0 },
               }}
             >
-              <Image style={styles.thumbnail} source={{ uri: item.picture }} />
+              <Image
+                style={{ width: 80, height: 80, margin: 10 }}
+                source={require("../assets/iconfood/japan.png")}
+              />
+              <View>
+                <Text style={{ fontSize: 16, fontWeight: "800", margin: 5 }}>
+                  {/* {item.product} */}แสงท่าเตียน
+                </Text>
+                <Text style={{ fontSize: 14, fontWeight: "500" }}>
+                  12.00-22.00 น. (ปิดวันจันทร์)
+                </Text>
+                <Text style={{ fontSize: 14, fontWeight: "500" }}>
+                  Rating : 4.6
+                </Text>
+              </View>
+              <AntDesign name="rightcircleo" size={24} color="black" />
+
             </View>
           </View>
         </TouchableOpacity>
@@ -72,7 +93,7 @@ const RestaurantScreen = ({ navigation, route }) => {
 
   if (loading === true) {
     return (
-      <View>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <ActivityIndicator color="#609EA2" size="large" />
       </View>
     );
@@ -83,8 +104,8 @@ const RestaurantScreen = ({ navigation, route }) => {
   };
 
   return (
-    <View>
-      <View style={{ flex: 1, alignItems: "center" }}>
+    <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
+      <View >
         <Text>{route.params?.page}</Text>
       </View>
       <FlatList
@@ -94,7 +115,7 @@ const RestaurantScreen = ({ navigation, route }) => {
         refreshing={loading}
         renderItem={_renderItem}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
