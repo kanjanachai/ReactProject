@@ -33,7 +33,7 @@ const HomeScreen = ({ navigation }) => {
             }
           >
             <Image
-              source={require("../assets/iconfood/Korea.png")}
+              source={require("../assets/iconfood/korea.png")}
               style={{ width: 50, height: 50, margin: 4 }}
             />
             <Text style={styles.home_txt_btn_sty}>Korean Food</Text>
@@ -89,7 +89,7 @@ const HomeScreen = ({ navigation }) => {
             }
           >
             <Image
-              source={require("../assets/react_logo.png")}
+              source={require("../assets/iconfood/recommend.png")}
               style={{ width: 50, height: 50, margin: 4 }}
             />
             <Text style={styles.home_txt_btn_sty}>Recommend</Text>
@@ -102,7 +102,7 @@ const HomeScreen = ({ navigation }) => {
             }
           >
             <Image
-              source={require("../assets/react_logo.png")}
+              source={require("../assets/iconfood/all.png")}
               style={{ width: 50, height: 50, margin: 4 }}
             />
             <Text style={styles.home_txt_btn_sty}>All Restaurant</Text>
