@@ -19,14 +19,14 @@ import "react-calendar/dist/Calendar.css";
 import { AntDesign } from "@expo/vector-icons";
 
 const BookingScreen = ({ navigation, route }) => {
-  const [selectedhour, setSelectedhour] = React.useState("");
-  const [selectedmin, setSelectedmin] = React.useState("");
-  const [selectedampm, setSelectedampm] = React.useState("");
+  const [selectedhour, setSelectedhour] = React.useState("00");
+  const [selectedmin, setSelectedmin] = React.useState("00");
+  const [selectedampm, setSelectedampm] = React.useState("--");
   const [selectcalenda, setSelectcalenda] = React.useState(new Date());
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   const minus = () => {
-    if (count <= 0) {
+    if (count <= 1) {
       toast.dismiss();
       toast("More than one person.", {});
     } else {
@@ -36,9 +36,27 @@ const BookingScreen = ({ navigation, route }) => {
   const pass = () => {
     if (count >= 9) {
       toast.dismiss();
-      toast("Less than nine persons.");
+      toast("Less than ten persons.");
     } else {
       setCount(count + 1);
+    }
+  };
+  const check = () => {
+    if (
+      selectedampm === "--" ||
+      selectedhour === "00"
+    ) {
+      toast.dismiss();
+      toast("Please select time for booking.");
+    } else {
+      navigation.navigate("Result", {
+        title: route.params?.name,
+        num: count,
+        date: selectcalenda.toDateString(),
+        time1: selectedhour,
+        time2: selectedmin,
+        time3: selectedampm,
+      });
     }
   };
 
@@ -71,8 +89,8 @@ const BookingScreen = ({ navigation, route }) => {
               duration: 3000,
               style: {
                 borderRadius: "10px",
-                borderColor:"red",
-                borderWidth:"5",
+                borderColor: "red",
+                borderWidth: "5",
                 background: "#333",
                 color: "#fff",
               },
@@ -193,7 +211,7 @@ const BookingScreen = ({ navigation, route }) => {
 
           <View style={{ margin: 5 }}>
             <Text style={{ fontSize: 15, fontWeight: "500" }}>
-              Number of People
+              Number of Person
             </Text>
 
             <View style={{ marginVertical: 5, alignItems: "flex-start" }}>
@@ -267,15 +285,9 @@ const BookingScreen = ({ navigation, route }) => {
                   shadowOpacity: 0.25,
                   shadowRadius: 2,
                 }}
-                onPress={() =>
-                  navigation.navigate("Result", {
-                    num: count,
-                    date: selectcalenda.toDateString(),
-                    time1: selectedhour,
-                    time2: selectedmin,
-                    time3: selectedampm,
-                  })
-                }
+                onPress={() => {
+                  check();
+                }}
               >
                 <Text
                   style={{
