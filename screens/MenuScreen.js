@@ -46,7 +46,7 @@ const MenuScreen = () => {
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Home2"
         component={Home2Screen}
         options={{
@@ -61,7 +61,7 @@ const MenuScreen = () => {
             </View>
           ),
         }}
-      />
+      /> */}
       <Tab.Screen
         name="News"
         component={Testpage}

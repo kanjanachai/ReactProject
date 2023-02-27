@@ -28,7 +28,7 @@ const BookingScreen = ({ navigation, route }) => {
   const minus = () => {
     if (count <= 0) {
       toast.dismiss();
-      toast("One or more people.", {});
+      toast("More than one person.", {});
     } else {
       setCount(count - 1);
     }
@@ -36,7 +36,7 @@ const BookingScreen = ({ navigation, route }) => {
   const pass = () => {
     if (count >= 9) {
       toast.dismiss();
-      toast("Not more than nine people.");
+      toast("Less than nine persons.");
     } else {
       setCount(count + 1);
     }
@@ -71,6 +71,8 @@ const BookingScreen = ({ navigation, route }) => {
               duration: 3000,
               style: {
                 borderRadius: "10px",
+                borderColor:"red",
+                borderWidth:"5",
                 background: "#333",
                 color: "#fff",
               },
