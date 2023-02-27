@@ -17,8 +17,6 @@ const RestaurantScreen = ({ navigation, route }) => {
   const [restaurant, setRestaurant] = useState([]);
   const [loading, setLoading] = useState(false);
   const api = "https://stormy-panther.cyclic.app/restaurant/";
-  // const api = "https://api.codingthailand.com/api/course";
-  // const api = "https://zealous-pink-kimono.cyclic.app/inventory";
 
   const getdata = async () => {
     try {
@@ -90,7 +88,7 @@ const RestaurantScreen = ({ navigation, route }) => {
                 style={{ width: 80, height: 80, margin: 5, borderRadius: 20 }}
                 source={{ uri: item.picture }}
               />
-              <View style={{ margin: 10, width: 180 }}>
+              <View style={{ margin: 10, width: 190 }}>
                 <Text style={{ fontSize: 14, fontWeight: "600", marginBottom: 5 }}>
                   {item.title}
                 </Text>

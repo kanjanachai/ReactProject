@@ -112,7 +112,7 @@ const BookingScreen = ({ navigation, route }) => {
                   setSelected={(val) => setSelectedhour(val)}
                   data={calendata.datahour}
                   save="value"
-                  defaultOption={{ key: "0", value: " 0 " }}
+                  defaultOption={{ key: "00", value: " 00 " }}
                   search={false}
                   boxStyles={{
                     zIndex: 2,
@@ -132,8 +132,6 @@ const BookingScreen = ({ navigation, route }) => {
                     alignItems: "center",
                     backgroundColor: "#ffffff",
                   }}
-                  dropdownItemStyles={{}}
-                  dropdownTextStyles={{}}
                 />
               </View>
               <View style={{ flex: 1, margin: 4 }}>
@@ -141,7 +139,7 @@ const BookingScreen = ({ navigation, route }) => {
                   setSelected={(val) => setSelectedmin(val)}
                   data={calendata.dataminus}
                   save="value"
-                  defaultOption={{ key: "0", value: " 0 " }}
+                  defaultOption={{ key: "00", value: " 00" }}
                   search={false}
                   boxStyles={{
                     zIndex: 2,
@@ -168,7 +166,7 @@ const BookingScreen = ({ navigation, route }) => {
                   setSelected={(val) => setSelectedampm(val)}
                   data={calendata.dataampm}
                   save="value"
-                  defaultOption={{ key: "--", value: " -- " }}
+                  defaultOption={{ key: "--", value: " --" }}
                   search={false}
                   boxStyles={{
                     zIndex: 2,
