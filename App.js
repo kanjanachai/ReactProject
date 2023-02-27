@@ -18,6 +18,7 @@ import QueueScreen from "./screens/QueueScreen";
 
 const Stack = createNativeStackNavigator();
 
+
 const App = () => {
   return (
     <NavigationContainer>

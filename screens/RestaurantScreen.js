@@ -58,7 +58,7 @@ const RestaurantScreen = ({ navigation, route }) => {
 
   const _renderItem = ({ item }) => {
     return (
-      <View>
+      <View style={{flex:1}}>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("Detail", { id: item.resid });
@@ -87,7 +87,7 @@ const RestaurantScreen = ({ navigation, route }) => {
               }}
             >
               <Image
-                style={{ width: 85, height: 85, margin: 5, borderRadius: 20 }}
+                style={{ width: 80, height: 80, margin: 5, borderRadius: 20 }}
                 source={{ uri: item.picture }}
               />
               <View style={{ margin: 10, width: 180 }}>
@@ -115,12 +115,8 @@ const RestaurantScreen = ({ navigation, route }) => {
     <SafeAreaView
       style={{ flex: 1, alignItems: "center", backgroundColor: "#6B728E" }}
     >
-      {/* <View>
-        <Text>{route.params?.page}</Text>
-      </View> */}
       <FlatList
         data={restaurant}
-        // keyExtractor={(item, index) => item.resid.toString()}
         onRefresh={_onRefresh}
         refreshing={loading}
         renderItem={_renderItem}
