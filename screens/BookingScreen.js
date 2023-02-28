@@ -49,7 +49,7 @@ const BookingScreen = ({ navigation, route }) => {
       toast("Please select time for booking.");
     } else if (email === " " ) {
       toast.dismiss();
-      toast("Please input yuor email.");
+      toast("Please enter your email.");
     }
     
     else {

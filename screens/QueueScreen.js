@@ -66,7 +66,7 @@ const QueueScreen = ({ navigation, route }) => {
           style={{
             flex: 1,
             backgroundColor: "#404258",
-            padding: 5,
+            padding: 10,
             margin: 5,
             borderRadius: 20,
             alignItems: "center",
