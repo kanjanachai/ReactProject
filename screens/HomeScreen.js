@@ -14,7 +14,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <Image
-        source={require("../assets/banner.png")}
+        source={require("../assets/banner/banner4.png")}
         style={{ width: "100%", height: 180, marginBottom: 5}}
       />
       <Text style={styles.home_txt_sty}>This is a festival of flavors.</Text>

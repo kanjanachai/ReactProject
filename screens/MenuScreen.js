@@ -4,10 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
 import HomeScreen from "./HomeScreen";
-import Home2Screen from "./Home2Screen";
-import Testpage from "./testpage";
-import { NavigationContainer } from "@react-navigation/native";
-import testpage from "./testpage";
+import PromotionScreen from "./PromotionScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -46,25 +43,9 @@ const MenuScreen = () => {
           ),
         }}
       />
-      {/* <Tab.Screen
-        name="Home2"
-        component={Home2Screen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View style={styles.menu_btn}>
-              <Ionicons
-                name={focused ? "home" : "home-outline"}
-                size={22}
-                color={focused ? "#ffffff" : "#888888"}
-              />
-              <Text style={{color: focused ? "#ffffff" : "#888888"}}>Home2</Text>
-            </View>
-          ),
-        }}
-      /> */}
       <Tab.Screen
         name="News"
-        component={Testpage}
+        component={PromotionScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.menu_btn}>

@@ -5,6 +5,7 @@ import {
   Button,
   TouchableOpacity,
   SafeAreaView,
+  TextInput,
 } from "react-native";
 
 import React, { useState } from "react";
@@ -19,10 +20,11 @@ import "react-calendar/dist/Calendar.css";
 import { AntDesign } from "@expo/vector-icons";
 
 const BookingScreen = ({ navigation, route }) => {
-  const [selectedhour, setSelectedhour] = React.useState("00");
-  const [selectedmin, setSelectedmin] = React.useState("00");
-  const [selectedampm, setSelectedampm] = React.useState("--");
-  const [selectcalenda, setSelectcalenda] = React.useState(new Date());
+  const [selectedhour, setSelectedhour] = useState("00");
+  const [selectedmin, setSelectedmin] = useState("00");
+  const [selectedampm, setSelectedampm] = useState("--");
+  const [selectcalenda, setSelectcalenda] = useState(new Date());
+  const [email, setEmail] = useState(" ");
   const [count, setCount] = useState(1);
 
   const minus = () => {
@@ -42,13 +44,15 @@ const BookingScreen = ({ navigation, route }) => {
     }
   };
   const check = () => {
-    if (
-      selectedampm === "--" ||
-      selectedhour === "00"
-    ) {
+    if (selectedampm === "--" || selectedhour === "00") {
       toast.dismiss();
       toast("Please select time for booking.");
-    } else {
+    } else if (email === " " ) {
+      toast.dismiss();
+      toast("Please input yuor email.");
+    }
+    
+    else {
       navigation.navigate("Result", {
         title: route.params?.name,
         num: count,
@@ -56,6 +60,7 @@ const BookingScreen = ({ navigation, route }) => {
         time1: selectedhour,
         time2: selectedmin,
         time3: selectedampm,
+        email: email,
       });
     }
   };
@@ -213,12 +218,19 @@ const BookingScreen = ({ navigation, route }) => {
             <Text style={{ fontSize: 15, fontWeight: "500" }}>
               Number of Person
             </Text>
-
-            <View style={{ marginVertical: 5, alignItems: "flex-start" }}>
+            {/* //////////// */}
+            <View
+              style={{
+                marginVertical: 5,
+                flex: 1,
+                flexDirection: "row",
+              }}
+            >
               <View
                 style={{
+                  // flex: 1,
                   flexDirection: "row",
-                  backgroundColor: "white",
+                  backgroundColor: "#ffffff",
                   borderRadius: 10,
                   marginVertical: 5,
                 }}
@@ -245,7 +257,7 @@ const BookingScreen = ({ navigation, route }) => {
                   style={{
                     fontWeight: "700",
                     fontSize: 26,
-                    marginHorizontal: 25,
+                    marginHorizontal: 20,
                   }}
                 >
                   {count}
@@ -268,6 +280,28 @@ const BookingScreen = ({ navigation, route }) => {
                 >
                   <AntDesign name="plus" size={20} color="#ffffff" />
                 </TouchableOpacity>
+              </View>
+              {/* /////// */}
+              <View
+                style={{
+                  flex: 1,
+                  marginLeft: 20,
+                }}
+              >
+                <TextInput
+                  style={{
+                    flex: 1,
+                    marginVertical: 5,
+                    fontWeight: "500",
+                    borderColor: "gray",
+                    borderWidth: 1,
+                    borderRadius: 10,
+                    backgroundColor: "#ffffff", 
+                  }}
+                  placeholder={"  E-mail"}
+                  placeholderTextColor={"gray"}
+                  onChangeText={setEmail}
+                />
               </View>
             </View>
             <View style={{ flex: 1, marginVertical: 5 }}>
