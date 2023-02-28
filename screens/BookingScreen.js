@@ -14,6 +14,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import calendata from "../component/calendardata";
 import toast, { Toaster } from "react-hot-toast";
+import validator from 'validator'
 import SwipePicker from "react-native-swipe-picker";
 import "react-calendar/dist/Calendar.css";
 
@@ -50,6 +51,9 @@ const BookingScreen = ({ navigation, route }) => {
     } else if (email === " " ) {
       toast.dismiss();
       toast("Please enter your email.");
+    } else if (!validator.isEmail(email)) {
+      toast.dismiss();
+      toast("Invalid email format.");
     }
     
     else {
@@ -309,7 +313,7 @@ const BookingScreen = ({ navigation, route }) => {
                 style={{
                   flex: 1,
                   backgroundColor: "#404258",
-                  borderRadius: 10,
+                  borderRadius: 20,
                   padding: 10,
                   marginTop: 5,
                   alignItems: "center",
