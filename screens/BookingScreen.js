@@ -2,22 +2,19 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   TouchableOpacity,
   SafeAreaView,
   TextInput,
 } from "react-native";
 
 import React, { useState } from "react";
+import styles from "../component/styles";
 import { SelectList } from "react-native-dropdown-select-list";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import calendata from "../component/calendardata";
 import toast, { Toaster } from "react-hot-toast";
-import validator from 'validator'
-import SwipePicker from "react-native-swipe-picker";
-import "react-calendar/dist/Calendar.css";
-
+import validator from "validator";
 import { AntDesign } from "@expo/vector-icons";
 
 const BookingScreen = ({ navigation, route }) => {
@@ -48,15 +45,13 @@ const BookingScreen = ({ navigation, route }) => {
     if (selectedampm === "--" || selectedhour === "00") {
       toast.dismiss();
       toast("Please select time for booking.");
-    } else if (email === " " ) {
+    } else if (email === " ") {
       toast.dismiss();
       toast("Please enter your email.");
     } else if (!validator.isEmail(email)) {
       toast.dismiss();
       toast("Invalid email format.");
-    }
-    
-    else {
+    } else {
       navigation.navigate("Result", {
         title: route.params?.name,
         num: count,
@@ -70,27 +65,9 @@ const BookingScreen = ({ navigation, route }) => {
   };
 
   return (
-    <SafeAreaView
-      style={{ flex: 1, alignItems: "center", backgroundColor: "#6B728E" }}
-    >
-      <View
-        style={{
-          alignItems: "center",
-        }}
-      >
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: "#EAEAEA",
-            borderRadius: 20,
-            padding: 10,
-            margin: 15,
-            shadowColor: "black",
-            shadowOpacity: 0.25,
-            shadowRadius: 4,
-            shadowOffset: { height: 0, width: 0 },
-          }}
-        >
+    <SafeAreaView style={styles.book_caontainer}>
+      <View style={{ alignItems: "center" }}>
+        <View style={styles.book_box}>
           <Toaster
             position="bottom-center"
             reverseOrder={false}
@@ -114,7 +91,7 @@ const BookingScreen = ({ navigation, route }) => {
 
           <View
             style={{
-              backgroundColor: "yellow",
+              // backgroundColor: "yellow",
               alignItems: "center",
               margin: 5,
             }}
@@ -222,7 +199,6 @@ const BookingScreen = ({ navigation, route }) => {
             <Text style={{ fontSize: 15, fontWeight: "500" }}>
               Number of Person
             </Text>
-            {/* //////////// */}
             <View
               style={{
                 marginVertical: 5,
@@ -232,7 +208,6 @@ const BookingScreen = ({ navigation, route }) => {
             >
               <View
                 style={{
-                  // flex: 1,
                   flexDirection: "row",
                   backgroundColor: "#ffffff",
                   borderRadius: 10,
@@ -240,44 +215,16 @@ const BookingScreen = ({ navigation, route }) => {
                 }}
               >
                 <TouchableOpacity
-                  style={{
-                    backgroundColor: "#404258",
-                    borderRadius: 10,
-                    padding: 10,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    shadowColor: "black",
-                    shadowOffset: { height: 2, width: 0 },
-                    shadowOpacity: 0.25,
-                    shadowRadius: 2,
-                  }}
+                  style={styles.book_btn_sty}
                   onPress={() => {
                     minus();
                   }}
                 >
                   <AntDesign name="minus" size={20} color="#ffffff" />
                 </TouchableOpacity>
-                <Text
-                  style={{
-                    fontWeight: "700",
-                    fontSize: 26,
-                    marginHorizontal: 20,
-                  }}
-                >
-                  {count}
-                </Text>
+                <Text style={styles.book_txt_btn}>{count}</Text>
                 <TouchableOpacity
-                  style={{
-                    backgroundColor: "#404258",
-                    borderRadius: 10,
-                    padding: 10,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    shadowColor: "black",
-                    shadowOffset: { height: 2, width: 0 },
-                    shadowOpacity: 0.25,
-                    shadowRadius: 2,
-                  }}
+                  style={styles.book_btn_sty}
                   onPress={() => {
                     pass();
                   }}
@@ -285,23 +232,9 @@ const BookingScreen = ({ navigation, route }) => {
                   <AntDesign name="plus" size={20} color="#ffffff" />
                 </TouchableOpacity>
               </View>
-              {/* /////// */}
-              <View
-                style={{
-                  flex: 1,
-                  marginLeft: 20,
-                }}
-              >
+              <View style={{ flex: 1, marginLeft: 20 }}>
                 <TextInput
-                  style={{
-                    flex: 1,
-                    marginVertical: 5,
-                    fontWeight: "500",
-                    borderColor: "gray",
-                    borderWidth: 1,
-                    borderRadius: 10,
-                    backgroundColor: "#ffffff", 
-                  }}
+                  style={styles.book_input_sty}
                   placeholder={"  E-mail"}
                   placeholderTextColor={"gray"}
                   onChangeText={setEmail}
@@ -310,19 +243,7 @@ const BookingScreen = ({ navigation, route }) => {
             </View>
             <View style={{ flex: 1, marginVertical: 5 }}>
               <TouchableOpacity
-                style={{
-                  flex: 1,
-                  backgroundColor: "#404258",
-                  borderRadius: 20,
-                  padding: 10,
-                  marginTop: 5,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  shadowColor: "black",
-                  shadowOffset: { height: 2, width: 0 },
-                  shadowOpacity: 0.25,
-                  shadowRadius: 2,
-                }}
+                style={styles.book_btn_sty2}
                 onPress={() => {
                   check();
                 }}
@@ -346,11 +267,3 @@ const BookingScreen = ({ navigation, route }) => {
 };
 
 export default BookingScreen;
-
-const styles = StyleSheet.create({
-  titleheader: {
-    fontSize: "20px",
-    padding: "10",
-    paddingBottom: 5,
-  },
-});

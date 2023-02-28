@@ -1,7 +1,6 @@
 import {
   Text,
   View,
-  Button,
   Image,
   Linking,
   ActivityIndicator,
@@ -9,8 +8,9 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { useFocusEffect } from "@react-navigation/native";
+import styles from "../component/styles";
 
 import axios from "axios";
 
@@ -59,19 +59,7 @@ const ResDetailScreen = ({ navigation, route }) => {
     const maps = item.maps;
     const fb = item.fecebook;
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: "#EAEAEA",
-          borderRadius: 20,
-          padding: 10,
-          margin: 15,
-          shadowColor: "black",
-          shadowOpacity: 0.25,
-          shadowRadius: 4,
-          shadowOffset: { height: 0, width: 0 },
-        }}
-      >
+      <View style={styles.resde_box}>
         <View
           style={{
             alignItems: "center",
@@ -82,43 +70,22 @@ const ResDetailScreen = ({ navigation, route }) => {
         </View>
         <View style={{}}>
           <Image
-            style={{
-              width: 315,
-              height: 171,
-              margin: 5,
-              borderRadius: 20,
-              resizeMode: "cover",
-            }}
+            style={styles.resde_size_image}
             source={{ uri: item.picture }}
           />
         </View>
         <View style={{ margin: 5 }}>
-          <Text style={{ fontSize: 14, fontWeight: "500" }}>{item.detail}</Text>
+          <Text style={styles.resde_txt}>{item.detail}</Text>
         </View>
         <View style={{ margin: 5 }}>
-          <Text style={{ fontSize: 14, fontWeight: "500" }}>
-            เวลาเปิด : {item.time}
-          </Text>
+          <Text style={styles.resde_txt}>เวลาเปิด : {item.time}</Text>
         </View>
         <View style={{ margin: 5 }}>
-          <Text style={{ fontSize: 14, fontWeight: "500" }}>
-            เบอร์ติดต่อ : {item.phone}
-          </Text>
+          <Text style={styles.resde_txt}>เบอร์ติดต่อ : {item.phone}</Text>
         </View>
         <View style={{ flex: 1, flexDirection: "row", marginVertical: 10 }}>
           <TouchableOpacity
-            style={{
-              backgroundColor: "#ffffff",
-              padding: 5,
-              margin: 5,
-              borderRadius: 20,
-              alignItems: "center",
-              justifyContent: "center",
-              shadowColor: "black",
-              shadowOffset: { height: 2, width: 0 },
-              shadowOpacity: 0.25,
-              shadowRadius: 2,
-            }}
+            style={styles.resde_btn_sty}
             onPress={() => Linking.openURL(fb, "_self")}
           >
             <Image
@@ -127,18 +94,7 @@ const ResDetailScreen = ({ navigation, route }) => {
             />
           </TouchableOpacity>
           <TouchableOpacity
-            style={{
-              backgroundColor: "#ffffff",
-              padding: 5,
-              margin: 5,
-              borderRadius: 20,
-              alignItems: "center",
-              justifyContent: "center",
-              shadowColor: "black",
-              shadowOffset: { height: 2, width: 0 },
-              shadowOpacity: 0.25,
-              shadowRadius: 2,
-            }}
+            style={styles.resde_btn_sty}
             onPress={() => Linking.openURL(maps, "_self")}
           >
             <Image
@@ -147,27 +103,11 @@ const ResDetailScreen = ({ navigation, route }) => {
             />
           </TouchableOpacity>
           <TouchableOpacity
-            style={{
-              flex: 1,
-              backgroundColor: "#404258",
-              padding: 5,
-              margin: 5,
-              borderRadius: 20,
-              alignItems: "center",
-              justifyContent: "center",
-              shadowColor: "black",
-              shadowOffset: { height: 2, width: 0 },
-              shadowOpacity: 0.25,
-              shadowRadius: 2,
-            }}
+            style={styles.resde_btn_sty2}
             onPress={() => navigation.navigate("Booking", { name: item.title })}
           >
             <Text
-              style={{
-                color: "#ffffff",
-                fontWeight: "600",
-                fontSize: "15px",
-              }}
+              style={{ color: "#ffffff", fontWeight: "600", fontSize: "15px" }}
             >
               Booking
             </Text>
@@ -177,9 +117,7 @@ const ResDetailScreen = ({ navigation, route }) => {
     );
   };
   return (
-    <SafeAreaView
-      style={{ flex: 1, alignItems: "center", backgroundColor: "#6B728E" }}
-    >
+    <SafeAreaView style={styles.resde_container}>
       <FlatList
         data={resdetail}
         onRefresh={_onRefresh}

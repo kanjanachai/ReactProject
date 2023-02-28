@@ -1,14 +1,12 @@
 import {
   View,
   Text,
-  Button,
   TouchableOpacity,
   SafeAreaView,
   StyleSheet,
 } from "react-native";
-import React, { useRef } from "react";
-// import emailjs from "emailjs-com";
-// import emailjs from "@emailjs/browser";
+import React from "react";
+import styles from "../component/styles";
 
 const QueueScreen = ({ navigation, route }) => {
   const time =
@@ -19,24 +17,8 @@ const QueueScreen = ({ navigation, route }) => {
   const email = route.params?.email;
 
   return (
-    <SafeAreaView
-      style={{ flex: 1, alignItems: "center", backgroundColor: "#6B728E" }}
-    >
-      <View
-        style={{
-          width: "92%",
-          backgroundColor: "#EAEAEA",
-          borderRadius: 20,
-          padding: 10,
-          marginTop: 15,
-          marginLeft: 15,
-          marginRight: 15,
-          shadowColor: "black",
-          shadowOpacity: 0.25,
-          shadowRadius: 4,
-          shadowOffset: { height: 0, width: 0 },
-        }}
-      >
+    <SafeAreaView style={styles.resu_container}>
+      <View style={styles.resu_box}>
         <View style={styles.group}>
           <Text style={styles.title}>ร้าน</Text>
           <Text style={styles.resulttxt}>{res}</Text>
@@ -63,27 +45,11 @@ const QueueScreen = ({ navigation, route }) => {
         </View>
 
         <TouchableOpacity
-          style={{
-            flex: 1,
-            backgroundColor: "#404258",
-            padding: 10,
-            margin: 5,
-            borderRadius: 20,
-            alignItems: "center",
-            justifyContent: "center",
-            shadowColor: "black",
-            shadowOffset: { height: 2, width: 0 },
-            shadowOpacity: 0.25,
-            shadowRadius: 2,
-          }}
+          style={styles.resu_btn_sty}
           onPress={() => navigation.navigate("Home")}
         >
           <Text
-            style={{
-              color: "#ffffff",
-              fontWeight: "600",
-              fontSize: "15px",
-            }}
+            style={{ color: "#ffffff", fontWeight: "600", fontSize: "15px" }}
           >
             Confirm
           </Text>
@@ -94,24 +60,3 @@ const QueueScreen = ({ navigation, route }) => {
 };
 
 export default QueueScreen;
-
-const styles = StyleSheet.create({
-  group: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  title: {
-    width: 60,
-    height: 30,
-    fontSize: 15,
-    fontWeight: "600",
-    margin: 5,
-    alignItems: "flex-start",
-  },
-  resulttxt: {
-    height: 30,
-    fontSize: 15,
-    fontWeight: "500",
-    margin: 5,
-  },
-});

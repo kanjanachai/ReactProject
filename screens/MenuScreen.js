@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import styles from "../component/styles";
 
 import HomeScreen from "./HomeScreen";
 import PromotionScreen from "./PromotionScreen";
@@ -64,17 +65,3 @@ const MenuScreen = () => {
 };
 
 export default MenuScreen;
-
-const styles = StyleSheet.create({
-  shadow: {
-    shadowColor: "#000000",
-    shadowOffset: { height: 2, width: 0 },
-    shadowOpacity: 0.35,
-    shadowRadius: 3,
-    elevation: 5,
-  },
-  menu_btn:{
-    alignItems:"center",
-    justifyContent:"center",
-  },
-});
